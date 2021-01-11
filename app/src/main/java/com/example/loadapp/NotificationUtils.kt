@@ -18,18 +18,21 @@ private const val FLAGS = 0
 // May need to pass notification Id as a arg here.
 fun NotificationManager.sendNotification(messageBody: String, applicationContext: Context, status: String) {
     val contentIntent = Intent(applicationContext, DetailActivity::class.java)
-    contentIntent.putExtra("fileName", messageBody)
-    contentIntent.putExtra("status", status)
+    contentIntent.apply {
+        putExtra("fileName", messageBody)
+        putExtra("status", status)
+    }
 
     val contentPendingIntent = PendingIntent.getActivity(applicationContext, NOTIFICATION_ID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+    val action = NotificationCompat.Action.Builder(0,"Show Details",contentPendingIntent).build()
     val notificationBuilder = NotificationCompat.Builder(applicationContext, applicationContext.getString(R.string.githubRepo_notification_channel_id))
-
-        .setSmallIcon(R.drawable.ic_assistant_black_24dp)
-        .setContentTitle("Download Complete")
-        .setContentText(messageBody)
-        .setContentIntent(contentPendingIntent)
-        .setAutoCancel(true)
-        .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setSmallIcon(R.drawable.ic_assistant_black_24dp)
+            .setContentTitle("Download Complete")
+            .setContentText(messageBody)
+            .setContentIntent(contentPendingIntent)
+            .setAutoCancel(true)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .addAction(action)
 
     notify(NOTIFICATION_ID, notificationBuilder.build())
 }

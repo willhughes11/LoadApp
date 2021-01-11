@@ -27,4 +27,6 @@
     <string name="loadAppGithubURL">https://github.com/udacity/nd940-c3-advanced-android-programming-project-starter</string>
     <string name="retrofitGithubURL">https://github.com/square/retrofit</string>
     <string name="ok">OK</string>
+
+    <string name="snooze">Snooze</string>
 </resources>
