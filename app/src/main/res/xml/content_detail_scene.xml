@@ -1,57 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:motion="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<Transition
-    motion:constraintSetEnd="@+id/end"
-    motion:constraintSetStart="@id/start"
-    motion:duration="1000">
-    <OnClick/>
-</Transition>
-
-
-<ConstraintSet android:id="@+id/start">
-</ConstraintSet>
-
-<ConstraintSet android:id="@+id/end">
-<Constraint
-    android:id="@+id/status"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginTop="10dp"
-    android:textAlignment="center"
-    motion:layout_constraintBottom_toTopOf="@+id/ok_button"
-    motion:layout_constraintEnd_toEndOf="parent"
-    motion:layout_constraintStart_toEndOf="@+id/status" />
-<Constraint
-    android:id="@+id/file_name_title"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginTop="10dp"
-    motion:layout_constraintBottom_toTopOf="@+id/ok_button"
-    motion:layout_constraintStart_toStartOf="@+id/file_name_title" />
-<Constraint
-    android:id="@+id/file_name"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:textAlignment="center"
-    motion:layout_constraintBottom_toTopOf="@+id/status"
-    motion:layout_constraintEnd_toEndOf="parent"
-    motion:layout_constraintStart_toEndOf="@+id/file_name" />
-
-<Constraint
-    android:id="@+id/status_text"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    motion:layout_constraintBottom_toTopOf="@+id/status_text"
-    motion:layout_constraintStart_toStartOf="parent" />
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/status_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/status_title"
+            app:layout_constraintBottom_toBottomOf="@+id/status_title" />
     </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@id/status_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/status_title"
+            app:layout_constraintStart_toStartOf="@+id/file_name"/>
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@id/end"
+        app:duration="2000"
+        app:autoTransition="animateToEnd">
+
+        <OnClick
+            app:targetId="@id/status_text"
+            app:clickAction="toggle" />
+    </Transition>
+
 </MotionScene>

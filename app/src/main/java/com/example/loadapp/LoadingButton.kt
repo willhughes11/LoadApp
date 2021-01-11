@@ -17,7 +17,7 @@ class LoadingButton @JvmOverloads constructor(
     private var widthSize = 0
     private var heightSize = 0
     private var buttonText: String
-    private var buttonBackgroundColor: Int = 0
+    private var buttonBackgroundColor = R.attr.buttonBackgroundColor
     private var progress: Float = 0f
     private var valueAnimator = ValueAnimator()
     private val textRect = Rect()
