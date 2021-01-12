@@ -40,22 +40,6 @@ List out the steps:
 5. Once the project is opened in Android studio, go to File -> Sync Project with gradle files
 6. Click on "Run" button in Android Studio to install the project on the phone or emulator
 ```
-
-## Testing
-
-Explain the steps needed to run any automated tests
-
-### Break Down Tests
-
-Explain what each test does and why
-
-```
-Examples here
-```
-## Project Instructions
-
-This section should contain all the student deliverables for this project.
-
 ## Built With
 
 * [Android Studio](https://developer.android.com/studio) - Default IDE used to build android apps
